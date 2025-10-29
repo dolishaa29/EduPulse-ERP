@@ -1,0 +1,101 @@
+
+.transport-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.transport-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.transport-card:hover {
+  transform: scale(1.05);
+}
+
+.transport-card h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000; 
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.transport-details {
+  margin-top: 10px;
+}
+
+.detail-item {
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: normal;
+  color: #000;
+}
+
+.detail-item label {
+  font-weight: bold;
+  color: #000; 
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status.inactive {
+  background-color: #F44336;
+  color: white;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.no-transports {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  width: 100%;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #000;
+}

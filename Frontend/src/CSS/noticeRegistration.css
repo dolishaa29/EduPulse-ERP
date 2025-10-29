@@ -1,0 +1,96 @@
+.NoticeRegistration {
+  padding: 50px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f7fc;
+}
+
+.NoticeRegistration-container {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.NoticeRegistration-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.NoticeRegistration-field label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.NoticeRegistration-field input,
+.NoticeRegistration-field textarea {
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.NoticeRegistration-field input:focus,
+.NoticeRegistration-field textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.NoticeRegistration-field textarea {
+  height: 120px;
+  resize: vertical; }
+
+button {
+  padding: 12px 25px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%; 
+}
+
+button:hover {
+  background-color: #45a049; 
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.view-notices {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.agree {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.agree input {
+  margin-right: 10px;
+}
+
+.agree label {
+  font-size: 14px;
+  color: #666;
+}

@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;
+  color: #000; 
+}
+
+h2 {
+  font-size: 36px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.addstudentcontainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.addstudentbutton {
+  background-color: #4c84ff;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;
+}
+
+.addstudentbutton:hover {
+  background-color: #3b6ec1;
+}
+
+.studenttable {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto 30px auto;
+  overflow-x: auto;
+}
+
+.studenttable h3 {
+  font-size: 24px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #1e2631;
+  color: white;
+  font-weight: 600;
+  padding: 15px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.table td {
+  padding: 15px;
+  font-size: 16px;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+}
+
+.table tr:hover {
+  background-color: #f0f4ff;
+}
+
+.deletebutton,
+.updatebutton {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.deletebutton {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.deletebutton:hover {
+  background-color: #c0392b;
+}
+
+.updatebutton {
+  background-color: #4c84ff;
+  color: white;
+}
+
+.updatebutton:hover {
+  background-color: #3b6ec1;
+}

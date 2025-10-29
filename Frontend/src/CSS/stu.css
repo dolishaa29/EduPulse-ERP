@@ -1,0 +1,57 @@
+.landscape-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border: 1px solid #1658d2;
+  border-radius: 10px;
+  background-color:red;  /* light blue-gray background */
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.landscape-container:hover {
+  background-color: pink; /* subtle hover effect */
+}
+
+.landscape-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 25px;
+}
+
+.landscape-item .label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #000;  /* text black */
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+.radio-buttons label {
+  font-size: 15px;
+  color: #000;   /* text black */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.radio-buttons input[type="radio"] {
+  accent-color: #4c84ff; /* blue accent for radio buttons */
+}
+
+.radio-buttons label:hover {
+  color: #000;  /* keep hover black too */
+}
+
+
+.hello
+{
+    color: red;
+}

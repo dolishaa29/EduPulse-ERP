@@ -1,0 +1,138 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f1f8f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.notice-form-container,
+.notice-list-container {
+  width: 90%;
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff; 
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-left: 6px solid #4caf50;
+}
+
+.notice-form-container:hover,
+.notice-list-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.notice-form-container h2,
+.notice-list-container h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #4caf50;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.notice-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.notice-form input,
+.notice-form textarea {
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  background-color: #f9f9f9; 
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.notice-form input:focus,
+.notice-form textarea:focus {
+  border-color: #4caf50;
+  background-color: #f1f8f4; 
+  outline: none;
+}
+
+.notice-form button {
+  padding: 12px 25px;
+  background: linear-gradient(145deg, #4caf50, #45a049); 
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  width: 50%;
+  align-self: center;
+}
+
+.notice-form button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.notice-form button:active {
+  transform: translateY(2px);
+}
+
+.message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #28a745;
+}
+
+.notice-card {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 6px solid #ff9800; 
+  border-right:6px solid #ff9800 ;
+}
+
+.notice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.notice-card h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.notice-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.notice-card strong {
+  font-weight: bold;
+  color: #333;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #ff4c4c; 
+  font-weight: 600;
+}
+

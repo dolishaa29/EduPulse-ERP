@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc; 
+  color: #333;  
+}
+
+
+
+h2 {
+  font-size: 36px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.adduserbutton {
+  background-color: #4c84ff;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;  
+}
+
+.adduserbutton:hover {
+  background-color: #3b6ec1;  
+}
+
+.stafftable {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 15px; 
+}
+
+.stafftable .table-header {
+  display: contents;
+  background-color: #1e2631;
+  color: white;
+  font-weight: 600;
+}
+
+.table-header div {
+  padding: 15px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.stafftable .table-row {
+  display: contents;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-row div {
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: left;
+}
+
+.table-row:hover {
+  background-color: #f0f4ff; 
+}
+
+
+.deletebutton, .updatebutton, .profilebutton {
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+
+.deletebutton {
+  background-color: #e74c3c; 
+  color: white;
+}
+
+.deletebutton:hover {
+  background-color: #c0392b;  
+}
+
+.updatebutton {
+  background-color: #4c84ff; 
+  color: white;
+}
+
+.updatebutton:hover {
+  background-color: #3b6ec1;  
+}
+
+.profilebutton {
+  background-color: #2ecc71;  
+  color: white;
+}
+
+.profilebutton:hover {
+  background-color: #27ae60;  
+}
+
+
+

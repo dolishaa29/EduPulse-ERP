@@ -1,0 +1,62 @@
+/* Dashboard.module.css */
+
+.appBar {
+  background-color: #4caf50; /* Green color for navbar */
+  color: white;
+}
+
+.menuButton {
+  color: white;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.logoutButton {
+  color: white;
+  background-color: #e91e63;
+  &:hover {
+    background-color: #d81b60;
+  }
+}
+
+.drawerPaper {
+  width: 240px;
+  background-color: #e1bee7; /* Light purple color for sidebar */
+}
+
+.drawerContainer {
+  overflow: auto;
+}
+
+.listItem {
+  padding-left: 16px;
+  font-size: 1.1rem;
+}
+
+.listItemText {
+  font-weight: 500;
+}
+
+.mainContent {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 240px;
+  background-color: #f3f4f6; /* Light background color for content */
+  transition: margin 0.3s ease-in-out;
+}
+
+.mainContentClosed {
+  margin-left: 0;
+}
+
+.collapseContent {
+  padding-left: 24px;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

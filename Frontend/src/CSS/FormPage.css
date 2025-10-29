@@ -1,0 +1,80 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.FormPage-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f7f5e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #4c9a2a;
+  margin-bottom: 20px;
+}
+
+form {
+  display: grid;
+  gap: 15px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #4c9a2a;
+  outline: none;
+}
+
+input::placeholder {
+  color: #a6a6a6;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #4c9a2a;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #3b7a24;
+}
+
+button:active {
+  background-color: #31601c;
+}
+
+p {
+  text-align: center;
+  font-size: 16px;
+}
+
+p.error {
+  color: red;
+}
+
+.FormPage-field {
+  display: grid;
+  gap: 15px;
+}

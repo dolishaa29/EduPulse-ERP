@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fc;  
+  color: #333; 
+}
+
+
+h2 {
+  font-size: 36px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.department-table {
+  width: 90%;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 15px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #1e2631; 
+  color: white;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #ddd;  
+}
+
+.table tbody tr:hover {
+  background-color: #f0f4ff;  
+}
+
+.deletebutton, .updatebutton {
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.deletebutton {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.deletebutton:hover {
+  background-color: #c0392b;  
+}
+
+.updatebutton {
+  background-color: #4c84ff; 
+  color: white;
+}
+
+.updatebutton:hover {
+  background-color: #3b6ec1; 
+}
+
+.adduserbutton {
+  background-color: #4c84ff;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 200px;  
+}
+
+.adduserbutton:hover {
+  background-color: #3b6ec1;  
+}
