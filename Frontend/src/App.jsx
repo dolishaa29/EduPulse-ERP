@@ -39,6 +39,8 @@ import AssignmentSubmission from './Pages/AssignmentSubmission'
 import ViewSubmissions from './Pages/ViewSubmission'
 import StuAttendance from './Pages/StuAttendance'
 import StaffAttendance from './Pages/StaffAttendance'
+import Managebook from './Pages/Managebook'
+import Admission from './Pages/Admission'
 
 function App() {
   return (
@@ -64,7 +66,7 @@ function App() {
         <Route path='/StudentDashboard' element={<StudentDashboard/>}/>
         <Route path='/StaffDashboard' element={<StaffDashboard/>}/>
         <Route path='/StudentProfile' element={<StudentProfile/>}/>
-        <Route path='/Notices' element={<Notices/>}/>
+        <Route path='/Notice' element={<Notices/>}/>
         <Route path='/ViewNotices' element={<ViewNotices/>}/>
         <Route path='/ViewFeedback' element={<ViewFeedback/>}/>
         <Route path='/AddBook' element={<AddBook/>}/>
@@ -85,6 +87,8 @@ function App() {
         <Route path='/ViewAssignment' element={<ViewAssignment/>}/>
         <Route path='/StuAttendance' element={<StuAttendance/>}/>
         <Route path='/StaffAttendance' element={<StaffAttendance/>}/>
+        <Route path='/issued' element={<Managebook/>}/>
+        <Route path='/Admission' element={<Admission/>}/>
       </Routes>
       </BrowserRouter>
     </div>

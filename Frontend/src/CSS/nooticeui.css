@@ -1,0 +1,95 @@
+
+html, #root, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent !important; 
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f7f7ff 0%, #efd1ff 50%, #ffffff 100%) !important;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; 
+    padding: 0; 
+    
+    
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+} 
+.loading, .error {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 50px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notice-list-container {
+    width: 100%;
+    max-width: 900px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.notice-list-container > p {
+    grid-column: 1 / -1; 
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.notice-card {
+    background-color: #ffffff; 
+    border-radius: 15px;
+    padding: 25px;
+    
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    border-left: 5px solid #9b31d4; 
+}
+
+.notice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.notice-card h3 {
+    color: #3a005f; 
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e0d7ee; /* Light divider line */
+    padding-bottom: 10px;
+}
+
+/* Notice Content (Body) */
+.notice-card p:nth-of-type(1) {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Dates */
+.notice-card p strong {
+    color: #6f42c1; /* Purple date labels */
+    font-weight: 600;
+}
+
+.notice-card p:last-child {
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #888;
+}

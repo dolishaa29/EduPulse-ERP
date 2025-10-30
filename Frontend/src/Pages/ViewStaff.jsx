@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import '../CSS/viewstaff.css';
+import '../CSS/newstaff.css';
 
 const ViewStaff = () => {
   const [staff, setStaff] = useState([]);
@@ -69,7 +69,7 @@ const ViewStaff = () => {
   }, []);
 
   return (
-    <div>
+    <div classname="background">
       <h2>View Staff</h2>
 
       {loading && <div>Loading...</div>}

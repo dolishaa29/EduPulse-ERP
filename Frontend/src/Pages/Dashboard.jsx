@@ -1,243 +1,462 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, Drawer, List, ListItem, ListItemText, AppBar, Toolbar, Typography, IconButton, CssBaseline, Button, ListItemIcon, Collapse } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import '../CSS/Dashboard.css';
-import Logo from '../assets/pic9.jpeg';
+import { useNavigate } from 'react-router-dom'; 
+import { 
+    Box, Drawer, List, ListItem, ListItemText, AppBar, Toolbar, 
+    Typography, IconButton, CssBaseline, Button, ListItemIcon, 
+    Collapse, Divider, Paper
+} from '@mui/material';
+import { 
+    Menu as MenuIcon, AccessTime, Assignment, People, School, 
+    RateReview, BusAlert, EditNote, Business, AttachMoney, 
+    Notifications, LocalLibrary, ExpandLess, ExpandMore, 
+    Home, Logout, Chat, Analytics, TrendingUp 
+} from '@mui/icons-material';
 
+const drawerWidth = 260;
+const primaryColor = '#202d3f';
+const accentColor = '#3f78e0';
+const hoverColor = 'rgba(63, 120, 224, 0.15)'; 
+const footerColor = '#141d26';
 const Dashboard = () => {
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [openAttendance, setOpenAttendance] = useState(false); 
-  const [openAssignment,setOpenAssignment]=useState(false);
-  const [openStaff,setOpenStaff]=useState(false);
-  const [openStudent,setOpenStudent]=useState(false);
-  const [openDepartment,setOpenDepartment]=useState(false);
-  const [openSalary,setOpenSalary]=useState(false);
-  const [openLibrary,setOpenLibrary]=useState(false);
-  const [openNotice,setOpenNotice]=useState(false);
-
-
+  
+  const [openAttendance, setOpenAttendance, ] = useState(false); 
+  const [openAssignment, setOpenAssignment] = useState(false);
+  const [openStaff, setOpenStaff] = useState(false);
+  const [openStudent, setOpenStudent] = useState(false);
+  const [openDepartment, setOpenDepartment] = useState(false);
+  const [openSalary, setOpenSalary] = useState(false);
+  const [openLibrary, setOpenLibrary] = useState(false);
+  const [openNotice, setOpenNotice] = useState(false);
+  
+  const [totalNotifications, setTotalNotifications] = useState(48); 
+  const [totalAssignments, setTotalAssignments] = useState(157);
+  const [totalFeedback, setTotalFeedback] = useState(25); 
   const navigateTo = (route) => {
-    navigate(route);
+    navigate({ pathname: route }); 
+    console.log(`Navigating to: ${route} using object syntax.`);
     setOpenDrawer(false); 
   };
 
   const toggleDrawer = () => setOpenDrawer(!openDrawer);
-  const toggleAttendance = () => setOpenAttendance(!openAttendance);  
-  const Notice=()=>setOpenNotice(!openNotice);
-  const Library=()=>setOpenLibrary(!openLibrary);
-  const Department=()=>setOpenDepartment(!openDepartment);
-  const Salary=()=>setOpenSalary(!openSalary);
-  const toggleAssignment=()=>setOpenAssignment(!openAssignment);
-  const Staff=()=>setOpenStaff(!openStaff);
-  const Student=()=>setOpenStudent(!openStudent);
+  const toggleAttendance = () => setOpenAttendance(!openAttendance);  
+  const toggleNotice = () => setOpenNotice(!openNotice);
+  const toggleLibrary = () => setOpenLibrary(!openLibrary);
+  const toggleDepartment = () => setOpenDepartment(!openDepartment); 
+  const toggleSalary = () => setOpenSalary(!openSalary);
+  const toggleAssignment = () => setOpenAssignment(!openAssignment);
+  const toggleStaff = () => setOpenStaff(!openStaff);
+  const toggleStudent = () => setOpenStudent(!openStudent);
+
+  const menuItems = [
+    { text: "Home", icon: <Home />, path: '/', alwaysOpen: true },
+    { 
+      text: "Attendance", icon: <AccessTime />, onClick: toggleAttendance, open: openAttendance, 
+      subItems: [
+        { text: "Staff Attendance", path: '/StaffAttendance' },
+        { text: "Student Attendance", path: '/StuAttendance' }
+      ]
+    },
+    { 
+      text: "Assignment", icon: <Assignment />, onClick: toggleAssignment, open: openAssignment,
+      subItems: [
+        { text: "Assignment", path: '/Assignment' },
+        { text: "View Submission", path: '/ViewSubmission' }
+      ]
+    },
+    { 
+      text: "Staff Details", icon: <People />, onClick: toggleStaff, open: openStaff,
+      subItems: [
+        { text: "Staff Registration", path: '/StaffRegistration' },
+        { text: "View Staff", path: '/ViewStaff' }
+      ]
+    },
+    { 
+      text: "Student Details", icon: <School />, onClick: toggleStudent, open: openStudent,
+      subItems: [
+        { text: "Student Registration", path: '/StudentRegistration' },
+        { text: "View Student", path: '/ViewStudent' },
+        { text: "adm", path: '/Admission' }
+      ]
+    },
+    { text: "Feedback", icon: <RateReview />, path: '/ViewFeedback' },
+    { text: "Transport Registration", icon: <BusAlert />, path: '/TransportRegistration' },
+    { text: "Online Test", icon: <EditNote />, path: '/OnlineTest' },
+    { 
+      text: "Department", icon: <Business />, onClick: toggleDepartment, open: openDepartment,
+      subItems: [
+        { text: "Department Register", path: '/DeptRegistration' },
+        { text: "View Department", path: '/ViewDepartment' }
+      ]
+    },
+    { 
+      text: "Salary", icon: <AttachMoney />, onClick: toggleSalary, open: openSalary,
+      subItems: [
+        { text: "Salary Register", path: '/SalaryRegistration' },
+        { text: "View Salary", path: '/ViewSalary' }
+      ]
+    },
+    { 
+      text: "Notice", icon: <Notifications />, onClick: toggleNotice, open: openNotice,
+      subItems: [
+        { text: "Drop Notice", path: '/Notice' },
+        { text: "View Notices", path: '/ViewNotices' }
+      ]
+    },
+    { 
+      text: "Library", icon: <LocalLibrary />, onClick: toggleLibrary, open: openLibrary,
+      subItems: [
+        { text: "Add Book", path: '/AddBook' },
+        { text: "View Book", path: '/ViewBook' }
+      ]
+    },
+  ];
+
+  const mockChats = [
+    { name: "Driver Rahul", time: "10:30 AM", message: "Route 3 minor delay." },
+    { name: "Principal Ma'am", time: "Yesterday", message: "Need bus report by EOD." },
+    { name: "Maintenance Head", time: "9:00 AM", message: "Vehicle V007 service request." },
+  ];
+
 
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <CssBaseline />
-      <AppBar position="sticky" sx={{ backgroundColor: "#1E2A38" }}>
+      
+      <AppBar 
+        position="fixed" 
+        elevation={3} // Halka shadow
+        sx={{ 
+          backgroundColor: primaryColor, 
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)'
+        }}
+      >
         <Toolbar>
           <IconButton edge="start" color="inherit" onClick={toggleDrawer} sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Admin Dashboard
+          {/* TITLE CHANGE: TMS Admin Panel -> ERP Admin Dashboard */}
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, fontWeight: 700 }}>
+            ERP Admin Dashboard 
           </Typography>
-          <Box>
-            <img src={Logo} alt="Logo" style={{ height: "40px", width: "auto" }} />
-          </Box>
+          <Button 
+            color="inherit" 
+            startIcon={<Logout />} 
+            onClick={() => console.log('Logout')}
+            sx={{
+                borderRadius: '8px',
+                '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                }
+            }}
+          >
+              Logout
+          </Button>
         </Toolbar>
       </AppBar>
 
 
+      {/* 2. Drawer (Sidebar) - Ekikrit dark design */}
       <Drawer
+        variant="temporary"
         open={openDrawer}
         onClose={toggleDrawer}
+        ModalProps={{ keepMounted: true }} 
         sx={{
-          width: 240,
+          width: drawerWidth,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 240,
+            width: drawerWidth,
             boxSizing: "border-box",
+            backgroundColor: primaryColor, 
+            color: '#ffffff', 
+            borderRight: 'none', 
           },
         }}
       >
+        <Toolbar sx={{ backgroundColor: '#141d26', minHeight: '64px!important' }}> {/* Contrast ke liye gehra header */}
+            <Typography variant="h6" sx={{ color: accentColor, fontWeight: 700, letterSpacing: 1.5 }}>
+                MENU
+            </Typography>
+        </Toolbar>
+        <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)' }} />
         <List>
-          <ListItem button onClick={toggleAttendance}>
-            <ListItemText primary="Attendance" />
-          </ListItem>
-
-          <Collapse in={openAttendance} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/StaffAttendance')}>
-                <ListItemText primary="Staff Attendance" />
-              </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/StuAttendance')}>
-                <ListItemText primary="Student Attendance" />
-              </ListItem>
-            </List>
-          </Collapse>
-
-          <ListItem button onClick={toggleAssignment}>
-            <ListItemText primary="Assignment" />
-          </ListItem>
-
-            <Collapse in={openAssignment} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/AssFeed')}>
-                <ListItemText primary="Assignment Feedback" />
+          {menuItems.map((item, index) => (
+            <React.Fragment key={index}>
+              <ListItem 
+                button 
+                onClick={item.path ? () => navigateTo(item.path) : item.onClick}
+                sx={{
+                  py: 1.5,
+                  transition: 'background-color 0.2s',
+                  '&:hover': {
+                    backgroundColor: hoverColor, // Accent hover state
+                    color: '#fff',
+                  }
+                }}
+              >
+                <ListItemIcon sx={{ color: accentColor }}>
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText primary={item.text} sx={{ 
+                    '& .MuiListItemText-primary': { fontWeight: 500, fontSize: '0.95rem' } 
+                }} />
+                {item.subItems && (item.open ? <ExpandLess sx={{ color: '#fff' }}/> : <ExpandMore sx={{ color: '#fff' }}/>)}
               </ListItem>
 
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/Assignment')}>
-                <ListItemText primary="Assignment" />
-              </ListItem>
-                <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewSubmission')}>
-                <ListItemText primary="View Submission" />
-              </ListItem>
-
-            </List>
-          </Collapse>
-
-
-          <ListItem button onClick={Staff}>
-            <ListItemText primary="Staff Details" />
-          </ListItem>
-
-            <Collapse in={openStaff} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/StaffRegistration')}>
-                <ListItemText primary="Staff Registration" />
-              </ListItem>
-             <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewStaff')}>
-                <ListItemText primary="View Staff" />  
-              </ListItem>
-            </List>
-          </Collapse>
-
-
-        <ListItem button onClick={Student}>
-            <ListItemText primary="Student Details" />
-          </ListItem>
-
-            <Collapse in={openStudent} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/StudentRegistration')}>
-                <ListItemText primary="Student Registration" />
-              </ListItem>
-             <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewStudent')}>
-                <ListItemText primary="View Student" />  
-              </ListItem>
-            </List>
-          </Collapse>
-
-          <ListItem button onClick={() => navigateTo('/ViewFeedback')}>
-            <ListItemText primary="Feedback" />
-          </ListItem>
-
-
-          <ListItem button onClick={() => navigateTo('/TransportRegistration')}>
-            <ListItemText primary="Transport Registration" />
-          </ListItem>
-
-          <ListItem button onClick={() => navigateTo('/OnlineTest')}>
-            <ListItemText primary="Online Test" />
-          </ListItem>
-
-
- 
-      <ListItem button onClick={Department}>
-            <ListItemText primary="Department" />
-          </ListItem>
-            <Collapse in={openDepartment} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/DeptRegistration')}>
-                <ListItemText primary="Department Register" />
-              </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewDepartment')}>
-                <ListItemText primary="View Department" />  
-              </ListItem>
-            </List>
-          </Collapse>
-
-
-          <ListItem button onClick={Salary}>
-            <ListItemText primary="Salary" />
-          </ListItem>
-            <Collapse in={openSalary} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/SalaryRegistration')}>
-                <ListItemText primary="Salary Register" />
-              </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewSalary')}>
-                <ListItemText primary="View Salary" />  
-              </ListItem>
-            </List>
-          </Collapse>
-
-
-          <ListItem button onClick={Notice}>
-            <ListItemText primary="Notice" />
-          </ListItem>
-
-          <Collapse in={openNotice} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/Notice')}>
-                <ListItemText primary="Drop Notice" />
-              </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewNotices')}>
-                <ListItemText primary="View Notices" />
-              </ListItem>
-            </List>
-          </Collapse>
-
-
-          <ListItem button onClick={Library}>
-            <ListItemText primary="Library" />
-          </ListItem>
-
-          <Collapse in={openLibrary} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/AddBook')}>
-                <ListItemText primary="Add Book" />
-              </ListItem>
-              <ListItem button sx={{ pl: 4 }} onClick={() => navigateTo('/ViewBook')}>
-                <ListItemText primary="View Book" />
-              </ListItem>
-            </List>
-          </Collapse>
-
-
-
-
-
-
+              {/* Collapsible Sub-menu */}
+              {item.subItems && (
+                <Collapse in={item.open} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {item.subItems.map((subItem, subIndex) => (
+                      <ListItem 
+                        key={subIndex} 
+                        button 
+                        sx={{ 
+                          pl: 6, 
+                          py: 1,
+                          backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                          transition: 'background-color 0.2s',
+                          '&:hover': {
+                            backgroundColor: hoverColor,
+                            color: accentColor // Highlight text on hover
+                          }
+                        }} 
+                        onClick={() => navigateTo(subItem.path)}
+                      >
+                        <ListItemText primary={subItem.text} sx={{ 
+                            '& .MuiListItemText-primary': { fontSize: '0.9rem' } 
+                        }} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </React.Fragment>
+          ))}
         </List>
       </Drawer>
 
+      {/* 3. Main Content Area (Mukhya Content Shetra) */}
       <Box
+        component="main"
         sx={{
           flexGrow: 1,
-          padding: "20px",
-          marginLeft: openDrawer ? "240px" : "0",
-          transition: "margin 0.3s ease-in-out",
-          backgroundColor: "#f4f4f4",
+          p: 0, // Padding footer/content ke andar manage karenge
+          mt: 8, // AppBar ke liye margin
+          backgroundColor: "#f0f2f5", 
+          overflowY: 'auto', // Scrollable content
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column', 
         }}
       >
-        <Button onClick={toggleDrawer} sx={{ marginBottom: "20px" }}>
-          {openDrawer ? "Close Sidebar" : "Open Sidebar"}
-        </Button>
+        <Toolbar /> 
+        <Box sx={{ flexGrow: 1, p: 3 }}>
+          
+          <Button 
+            onClick={toggleDrawer} 
+            variant="contained"
+            sx={{ 
+              marginBottom: "20px", 
+              backgroundColor: accentColor,
+              borderRadius: '8px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+              '&:hover': { 
+                  backgroundColor: '#3366cc',
+                  boxShadow: '0 6px 12px rgba(0, 0, 0, 0.3)'
+              }
+            }}
+            startIcon={<MenuIcon />}
+          >
+            {openDrawer ? "Close Menu" : "Open Menu"}
+          </Button>
 
-        <Box sx={{ marginTop: "20px" }}>
-          <Typography variant="h4">Welcome to the Dashboard!</Typography>
-          <Typography variant="body1" sx={{ marginTop: "10px" }}>
-            This is the area where different content is displayed based on what you select from the sidebar.
-          </Typography>
+          {/* Welcome Card - Swagat Sandesh */}
+          <Box 
+            sx={{ 
+              padding: { xs: "20px", md: "40px" },
+              backgroundColor: "#ffffff",
+              borderRadius: "12px",
+              boxShadow: "0 6px 20px rgba(0, 0, 0, 0.08)",
+              borderLeft: `5px solid ${accentColor}`,
+              transition: 'box-shadow 0.3s',
+              mb: 4 // Niche space
+            }}
+          >
+            {/* TITLE CHANGE 2 */}
+            <Typography variant="h4" gutterBottom sx={{ color: primaryColor, fontWeight: 700 }}>
+              ERP Admin Dashboard Welcomes you! 
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#555', lineHeight: 1.7, maxWidth: '800px' }}>
+              Youre admin and you can do all changes from here. Manage staff, students, departments, salaries, notices, library resources, and more with ease. Use the sidebar to navigate through different sections and keep the institution running smoothly.
+            </Typography>
+          </Box>
+
+          {/* Dashboard Widgets (Cards) - UPDATED METRICS */}
+          <Box sx={{ 
+              mt: 4, 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+              gap: '20px' ,
+              mb: 4
+          }}>
+              {/* Widget 1: Total Notifications (New) */}
+              <Box 
+                  sx={{ 
+                      p: 4, 
+                      bgcolor: '#fff', 
+                      borderRadius: '12px', 
+                      boxShadow: 2, 
+                      borderBottom: '4px solid #4caf50', // Green
+                      transition: 'transform 0.3s',
+                      '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 }
+                  }}
+              >
+                  <Typography variant="h6" color="#4caf50" sx={{ fontWeight: 600 }}>Total Notifications</Typography>
+                  <Typography variant="h3" sx={{ mt: 1, fontWeight: 800, color: primaryColor }}>{totalNotifications}</Typography>
+              </Box>
+              
+              {/* Widget 2: Assignments Submitted (New) */}
+              <Box 
+                  sx={{ 
+                      p: 4, 
+                      bgcolor: '#fff', 
+                      borderRadius: '12px', 
+                      boxShadow: 2, 
+                      borderBottom: '4px solid #ff9800', // Orange
+                      transition: 'transform 0.3s',
+                      '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 }
+                  }}
+              >
+                  <Typography variant="h6" color="#ff9800" sx={{ fontWeight: 600 }}>Assignments Submitted</Typography>
+                  <Typography variant="h3" sx={{ mt: 1, fontWeight: 800, color: primaryColor }}>{totalAssignments}</Typography>
+              </Box>
+
+              {/* Widget 3: Feedback Received (New) */}
+              <Box 
+                  sx={{ 
+                      p: 4, 
+                      bgcolor: '#fff', 
+                      borderRadius: '12px', 
+                      boxShadow: 2, 
+                      borderBottom: '4px solid #f44336', // Red
+                      transition: 'transform 0.3s',
+                      '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 }
+                  }}
+              >
+                  <Typography variant="h6" color="#f44336" sx={{ fontWeight: 600 }}>Feedback Received</Typography>
+                  <Typography variant="h3" sx={{ mt: 1, fontWeight: 800, color: primaryColor }}>{totalFeedback}</Typography>
+              </Box>
+
+              {/* Widget 4: Route Performance (Analytics Look) - Kept as is for variety */}
+              <Box 
+                  sx={{ 
+                      p: 4, 
+                      bgcolor: '#fff', 
+                      borderRadius: '12px', 
+                      boxShadow: 2, 
+                      borderBottom: `4px solid ${accentColor}`,
+                      transition: 'transform 0.3s',
+                      '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 },
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                  }}
+              >
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Typography variant="h6" color={primaryColor} sx={{ fontWeight: 600 }}>Route Performance</Typography>
+                      <TrendingUp sx={{ fontSize: 40, color: accentColor }} />
+                  </Box>
+                  <Typography variant="h3" sx={{ fontWeight: 800, color: primaryColor }}>92%</Typography>
+                  <Typography variant="body2" color="#777">On-time Completion Rate</Typography>
+              </Box>
+          </Box>
+          
+          {/* Live Chat/Notifications Section (Chat ki image/look) */}
+          <Paper 
+            elevation={4} 
+            sx={{ 
+                p: 3, 
+                borderRadius: '12px', 
+                mb: 4, 
+                borderLeft: '5px solid #28a745' // Green highlight
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Chat sx={{ color: '#28a745', mr: 1, fontSize: 30 }} />
+                <Typography variant="h5" sx={{ fontWeight: 600, color: primaryColor }}>
+                    Live Notifications & Driver Chat
+                </Typography>
+            </Box>
+            <Divider sx={{ mb: 2 }} />
+            
+            {/* Mock Chat/Notifications List */}
+            <List disablePadding>
+                {mockChats.map((chat, index) => (
+                    <ListItem 
+                        key={index} 
+                        secondaryAction={
+                            <Typography variant="caption" color="text.secondary">{chat.time}</Typography>
+                        }
+                        sx={{ 
+                            borderBottom: '1px solid #eee', 
+                            '&:last-child': { borderBottom: 'none' },
+                            py: 1,
+                            transition: 'background-color 0.2s',
+                            '&:hover': { backgroundColor: '#fafafa' }
+                        }}
+                    >
+                        <ListItemIcon sx={{ minWidth: 35 }}>
+                           <Notifications color="info" />
+                        </ListItemIcon>
+                        <ListItemText
+                            primary={chat.name}
+                            secondary={chat.message}
+                            primaryTypographyProps={{ fontWeight: 500, color: primaryColor }}
+                            secondaryTypographyProps={{ 
+                                style: { 
+                                    overflow: 'hidden', 
+                                    textOverflow: 'ellipsis', 
+                                    whiteSpace: 'nowrap' 
+                                } 
+                            }}
+                        />
+                    </ListItem>
+                ))}
+            </List>
+            <Button size="small" variant="text" sx={{ mt: 2, color: accentColor }}>
+                View All Messages
+            </Button>
+          </Paper>
+
+
         </Box>
+
+        {/* 4. Footer (Sabse Niche ka Hissa) */}
+        <Box 
+            component="footer"
+            sx={{
+                width: '100%',
+                py: 2,
+                px: 3,
+                backgroundColor: footerColor,
+                color: '#aaa',
+                textAlign: 'center',
+                boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.3)'
+            }}
+        >
+            <Typography variant="body2" sx={{ fontSize: '0.85rem' }}>
+                &copy; {new Date().getFullYear()} ERP Admin Panel. All rights reserved. | Powered by NextGen Systems.
+            </Typography>
+        </Box>
+
       </Box>
     </Box>
   );
 };
 
+// FIX: BrowserRouter wrapper hata diya gaya hai. Ab Dashboard mukhya component hai.
 export default Dashboard;

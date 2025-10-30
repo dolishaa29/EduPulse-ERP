@@ -124,6 +124,12 @@ const StaffDashboard = () => {
                     <ListItem button onClick={() => navigateTo('/ViewBook')}>
                       <ListItemText primary="View Books" />
                     </ListItem>
+
+                     <ListItem button onClick={() => navigateTo('/issued')}>
+                      <ListItemText primary="issued book" />
+                    </ListItem>
+
+
           
                     <ListItem button onClick={() => navigateTo('/Question')}>
                       <ListItemText primary="Question" />

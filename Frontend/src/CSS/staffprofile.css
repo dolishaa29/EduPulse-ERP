@@ -1,0 +1,145 @@
+/*
+
+html, #root, #app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: transparent !important; 
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f7f7ff 0%, #e0e7ff 50%, #ffffff 100%) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 40px 20px;
+} */
+.profile-container { /* This is your outermost container from StaffProfile.jsx */
+    width: 100%;
+    max-width: 400px; /* Small, focused card width */
+    display: flex; /* To center the .profile-details card itself */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Loading, Error, and No Profile Messages (Themed) */
+.profile-container .error-message,
+.profile-container .loading-message,
+.profile-container .no-profile {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #4b0082; /* Deep violet for clear visibility */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* --- 3. PROFILE DETAILS CARD --- */
+.profile-details { /* This is the actual card wrapper */
+    background-color: #ffffff;
+    border-radius: 24px; /* Highly rounded corners */
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    padding: 0; /* Remove internal padding here, sections will have their own */
+    overflow: visible; /* Allows avatar to overlap */
+    z-index: 10;
+}
+
+/* --- 4. HEADER SECTION (Avatar and Name) --- */
+.profile-details .profile-header-section { /* Custom class for the top header part */
+    /* Light yellowish/lavender blend background, matching image reference */
+    background: linear-gradient(180deg, #fffaf5 0%, #f0e6ff 100%); 
+    padding: 30px 20px 70px 20px; /* Increased bottom padding to accommodate avatar overlap */
+    text-align: center;
+    position: relative;
+    border-radius: 24px 24px 0 0; /* Match top border radius of the card */
+}
+
+/* Circular Avatar Image */
+.profile-details img { /* Targets the img directly within .profile-details */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Makes it perfectly circular */
+    object-fit: cover;
+    margin: 0 auto; /* Center the avatar */
+    transform: translateY(25px); /* Moves avatar down to overlap the white card body */
+    border: 5px solid #ffffff; /* White border around avatar */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    position: relative;
+    z-index: 20; /* Ensures avatar is always on top */
+}
+
+/* Name and Email */
+.profile-details h2 { /* Targets the h2 for staff name */
+    font-size: 24px;
+    font-weight: 700;
+    color: #4b0082; /* Deep violet title */
+    margin-top: 40px; /* Space after avatar moves up */
+    margin-bottom: 5px;
+}
+
+.profile-details p:nth-of-type(1) { /* Targets the first <p> for email */
+    font-size: 14px;
+    color: #888;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9e5f5; /* Separator line */
+    width: 80%; /* Width of the separator */
+}
+
+/* --- 5. DETAILS GRID SECTION --- */
+.profile-details-grid-section { /* Custom class for the details part */
+    padding: 20px 30px 30px 30px; /* Internal padding for the details grid */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between detail items */
+}
+
+.profile-details-grid-section p { /* Targets p tags within the grid section */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 8px 0;
+    border-bottom: 1px dashed #f0f0f0; /* Dashed line for a softer look */
+    margin: 0; /* Remove default paragraph margin */
+}
+
+.profile-details-grid-section p:last-of-type { /* No border for the last item */
+    border-bottom: none;
+}
+
+.profile-details-grid-section p strong { /* Label (e.g., Staff ID, Name) */
+    font-size: 14px;
+    color: #6a5acd; /* Medium purple color for labels */
+    font-weight: 500;
+    flex: 1;
+    text-align: left;
+    white-space: nowrap; /* Prevents label wrap */
+}
+
+.profile-details-grid-section p span { /* Value (The actual data) */
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+    text-align: right;
+    flex: 2; /* Gives value more space */
+}
+
+/* --- 6. LOADING AND ERROR STATES --- */
+/* These will use the .profile-container styles for centering */
+.profile-container > div { /* Target direct children of .profile-container for generic messages */
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    color: #4b0082;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
