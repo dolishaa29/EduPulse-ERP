@@ -10,7 +10,6 @@ erp();
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname,'/public')));
-
 app.use(cors({
   origin:"http://localhost:5173",
   methods:["POST","GET","DELETE","PUT"],
@@ -29,6 +28,7 @@ app.use("/",require("./router/transportrouter"));
 app.use("/",require("./router/noticerouter"));
 app.use("/",require("./router/assignmentrouter"));
 app.use("/",require("./router/feedbackrouter"));
+app.use("/",require("./router/admission"));
 const PORT=7000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

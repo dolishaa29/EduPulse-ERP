@@ -13,11 +13,12 @@ let upload =multer({
     })
 })
 
-const { addbook, viewbook, deletebook,issuebook,returnbook } = require("../controller/librarycontroller");
+const { addbook, viewbook, deletebook,issuebook,returnbook,issued } = require("../controller/librarycontroller");
 router.post("/addbook",upload.single("image"),addbook);
 router.get("/viewbook",viewbook);
 router.delete("/deletebook/:id",deletebook);
 router.post("/issuebook",auth,issuebook);
 router.put("/returnbook",auth,returnbook);
+router.get("/issued",auth,issued);
 
 module.exports=router;

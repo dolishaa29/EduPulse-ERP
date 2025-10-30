@@ -1,5 +1,5 @@
-
 let rec = require("../models/Book");
+let activity = require("../models/activity");
 let act = require("../models/activity");
 
 exports.addbook = async (req, res) => {
@@ -100,8 +100,8 @@ studentId:student.id, studentName:student.name,action:'issued',date:new Date()
 
 exports.returnbook = async (req, res) => {
   try {
-    const bookId = req.params.id;
-    let student = req.student; 
+    const bookId = req.body.id;
+    let student = req.staff; 
     const book = await rec.findById(bookId);
     if (!book) {
       return res.status(404).json({ success: false, msg: "Book not found" });
@@ -127,16 +127,20 @@ exports.returnbook = async (req, res) => {
   }
 };
 
-exports.issued = async (bookId, studentId) => {
-  try {
-    const lastIssue = await rec2.findOne({ bookId, studentId, action: 'issued' }).sort({ date: -1 });
 
+exports.issued = async (req, res) => {
+  try {
+    const student = req.staff; 
+
+    console.log("Student ID:", student.id);
+    const lastIssue = await act.findOne({ studentId:student.id, action: 'issued' }).sort({ date: -1 });
+     console.log("Last issued record:", lastIssue);
     if (!lastIssue) {
-      throw new Error("No record of issuing found");
+      return res.status(404).json({ success: false, msg: "No record of issuing found" });
     }
 
-    return lastIssue;
+    return res.status(200).json({ success: true, book: lastIssue });
   } catch (err) {
-    throw new Error("Error fetching last issued book: " + err.message);
+    return res.status(500).json({ success: false, msg: "Error fetching last issued book: " + err.message });
   }
 };

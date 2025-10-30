@@ -1,4 +1,4 @@
-const { addbook, viewbook, deletebook,issuebook ,returnbook} = require("../service/libraryservice");
+const { addbook, viewbook, deletebook,issuebook ,returnbook,issued} = require("../service/libraryservice");
 
 exports.addbook=async(req,res)=>
 {
@@ -20,4 +20,8 @@ exports.issuebook=async(req,res)=>
 exports.returnbook=async(req,res)=>
 {
     await returnbook(req,res);
+}
+exports.issued=async(req,res)=>
+{
+    await issued(req,res);
 }
