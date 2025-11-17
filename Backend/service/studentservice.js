@@ -45,7 +45,7 @@ exports.studentlogin = async (req, res) => {
   lpass = data.password;
   pass = await bct.compare(password, lpass);
   if (pass) {
-    let token = jwt.sign({ token: data.email }, "abbc", {
+    let token = jwt.sign({ token: data.email }, "aabb", {
       expiresIn: "1d",
     });
     res.cookie("emtoken", token);

@@ -17,7 +17,7 @@ const { studentregister, studentlogin, studentprofile, studentlogout, viewstuden
 router.post("/studentregister",upload.single("image"),studentregister);
 router.post("/studentlogin",studentlogin);
 router.get("/studentlogout",studentlogout);
-router.get("/viewstudent",auths,viewstudent);
+router.get("/viewstudent",viewstudent);
 router.delete("/deletestudent/:id",auths,deletestudent);
 router.put("/updatestudent/:id",upload.single("image"),updatestudent);
 router.get("/studentprofile",auth,studentprofile);

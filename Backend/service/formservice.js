@@ -1,65 +1,181 @@
-let rec=require("../models/form");
-let rec2=require("../models/test");
 
-exports.addquestion=async(req,res)=>
-{
- let question=req.body.question;
- let option1=req.body.option1;
- let option2=req.body.option2;
- let option3=req.body.option3;
- let option4=req.body.option4;
- let answer=req.body.answer;
+const test = require("../models/test");
+const Submission=require("../models/subm");
 
- let data=new rec({question:question,option1:option1,option2:option2,option3:option3,option4:option4,answer:answer});
- await data.save();
- return res.status(201).json({success:true,msg:"question got registered"});
-}
+const Quiz = require('../models/test');
 
+exports.addquestion = async (req, res) => {
+  const { title, questions } = req.body;
+  console.log('Received title:', title);
+  console.log('Received questions:', questions);
 
-exports.viewquestion=async(req,res)=>
-{
-  console.log("1");
-  let formlist = await rec.find();
-  console.log("aa"+formlist);
-  if (formlist.length == 0) {
-    return res.status(404).json({ success: false, msg: "No question found" });
-  }
-  return res.status(200).json({
-    success: true,msg: "All questions  fetched successfully",form: formlist,
-  });
-}
+  try {
+    let quiz = await Quiz.findOne({ title });
 
+    if (!quiz) {
+      console.log('Quiz not found, creating a new one...');
+      quiz = new Quiz({
+        title,
+        questions: formatQuestions(questions)
+      });
+    } else {
+      console.log('Found existing quiz:', quiz.title);
+      quiz.questions = [...quiz.questions, ...formatQuestions(questions)];
+    }
 
-exports.deletequestion=async(req,res)=>
-{
-  console.log("hello");
-  let id = req.params.id;
-  await rec.deleteOne({ _id: id });
-  return res.status(200).json({ success: true, msg: "delete successfully!!" });
-}
+    await quiz.save();
 
+    return res.status(201).json({
+      success: true,
+      msg: "Questions added successfully",
+      quiz
+    });
 
-exports.checkquestion = async (req, res) => {
-  let id = req.params.id;
-  console.log(id);
-  let userAnswer = req.body.answer;
-  console.log(userAnswer);
-  let question = await rec.findOne({ _id: id });
-  let correctAnswer = question.answer;
-  let right="right";
-  let wrong="wrong";
-  if (!question) {
-    return res.status(404).json({ success: false, msg: "Question not found" });
-  }
-  userAnswer = userAnswer.toString();
-  if (userAnswer === correctAnswer) {
-    const result = new rec2({questionId: id,userAnswer: userAnswer,question:question.question,correctAnswer: question.answer,Answer: right,submittedAt: new Date()});
-    await result.save();
-    return res.status(200).json({success: true,msg: "Correct answer submitted",Answer: right});
-
-  } else {
-    const result = new rec2({questionId: id,userAnswer: userAnswer,question:question.question,correctAnswer: question.answer,Answer: wrong,submittedAt: new Date()});
-    await result.save();
-    return res.status(200).json({success: true,msg: "Incorrect answer submitted",Answer: wrong});
+  } catch (error) {
+    console.error('Error saving quiz:', error);
+    return res.status(500).json({
+      success: false,
+      msg: 'Failed to save quiz',
+      error: error.message
+    });
   }
 };
+
+const formatQuestions = (questions) => {
+  return questions.map((q, index) => ({
+    questionText: q.text,
+    questionId: Date.now() + index,  
+    options: {
+      A: q.options[0],
+      B: q.options[1],
+      C: q.options[2],
+      D: q.options[3]
+    },
+    correctAnswer: q.correctAnswer,
+    points: q.points || 1, 
+  }));
+};
+
+
+exports.viewTitle = async (req, res) => {
+  try {
+    const quizzes = await test.find().select('title');  
+    const titles = quizzes.map(quiz => quiz.title);    
+    return res.status(200).json({ success: true, titles });  
+  } catch (error) {
+    return res.status(500).json({ success: false, msg: 'Server error' });
+  }
+};
+
+
+exports.viewAssessment = async (req, res) => {
+  const { title } = req.params;
+  try {
+    const quiz = await test.findOne({ title });
+    if (!quiz) {
+      return res.status(404).json({ success: false, msg: "Quiz not found" });
+    }
+    
+    return res.status(200).json({ success: true, quiz });
+  } catch (err) {
+    return res.status(500).json({ success: false, msg: "Server error", error: err.message });
+  }
+};
+
+
+
+exports.ViewResult = async (req, res) => {
+  const studentId = req.adm; 
+  console.log(studentId);
+  const { title } = req.params; 
+  console.log(title);
+
+  try {
+    const quiz = await test.findOne({ title });
+    if (!quiz) {
+      return res.status(404).json({ success: false, msg: 'Quiz not found' });
+    }
+
+    const ans = await Submission.findOne({ quizTitle:title, studentId:studentId.id });
+    console.log(ans);
+    if (!ans) {
+      return res.status(404).json({ success: false, msg: 'Submission not found for this student' });
+    }
+
+    let correctCount = 0; 
+    let total = quiz.questions.length;
+
+    const resultDetails = quiz.questions.map(question => {
+      const stuans = ans.answers[question.questionId];  
+      console.log(stuans);
+      const isCorrect = stuans === question.correctAnswer;  
+      console.log(isCorrect);
+      if (isCorrect) {
+        correctCount++;  
+      }
+
+      return {
+        questionId: question.questionId,
+        questionText: question.questionText,
+        correctAnswer: question.correctAnswer,
+        studentAnswer: stuans,
+        isCorrect: isCorrect
+      };
+    });
+
+    const score = (correctCount / total) * 100;
+ const result = {
+      score,
+      correctAnswers: correctCount,
+      totalQuestions: total,
+      resultDetails
+    };
+    return res.status(200).json({
+      success: true,
+      msg: 'Quiz result fetched successfully',
+      result
+    });
+
+  } catch (error) {
+    console.error('Error fetching result:', error);
+    return res.status(500).json({ success: false, msg: 'Failed to fetch result', error: error.message });
+  }
+};
+
+
+exports.AssessmentSubmission = async (req, res) => {
+  const student = req.adm;
+  const { quizTitle, answers } = req.body;
+
+  try {
+    const existingSubmission = await Submission.findOne({
+      studentId: student.id,
+      quizTitle: quizTitle,
+    });
+
+    if (existingSubmission) {
+      return res.status(400).json({
+        success: false,
+        msg: 'You have already submitted this quiz.',
+      });
+    }
+
+    const newSubmission = new Submission({
+      studentName: student.name,
+      quizTitle,
+      answers,
+      studentId: student.id,
+    });
+
+    await newSubmission.save();
+
+    return res.status(200).json({ success: true, msg: 'Quiz submission successful' });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, msg: 'Server error', error: error.message });
+  }
+};
+
+
+

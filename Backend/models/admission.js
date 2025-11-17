@@ -11,6 +11,7 @@ let studentadmission=mongo.Schema({
    department:{type:String},
    basefee:{type:Number},
    hostel:{type:String},
+   
    library:{type:String},
    transport:{type:String},
    totalfee:{type:Number},

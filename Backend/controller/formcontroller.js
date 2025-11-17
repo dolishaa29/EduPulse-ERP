@@ -1,26 +1,25 @@
-const {addquestion,viewquestion,updatequestion,deletequestion,checkquestion}=require("../service/formservice")
+const {addquestion, viewAssessment, AssessmentSubmission, ViewResult, viewTitle}=require("../service/formservice")
 
-
-exports.addquestion=async(req,res)=>{
+exports.addquestion=async(req,res)=>
+{
     await addquestion(req,res);
 }
 
-exports.viewquestion=async(req,res)=>
+exports.viewAssessment=async(req,res)=>
 {
-    await viewquestion(req,res);
-}
- 
-exports.updatequestion=async(req,res)=>
-{
-    await updatequestion(req,res);
+    await viewAssessment(req,res);
 }
 
-exports.deletequestion=async(req,res)=>
+exports.AssessmentSubmission=async(req,res)=>
 {
-    await deletequestion(req,res);
+    await AssessmentSubmission(req,res);
 }
 
-exports.checkquestion=async(req,res)=>
+exports.ViewResult=async(req,res)=>
 {
-    await checkquestion(req,res);
+    await ViewResult(req,res);
+}
+
+exports.viewTitle=async(req,res)=>{
+    await viewTitle(req,res);
 }

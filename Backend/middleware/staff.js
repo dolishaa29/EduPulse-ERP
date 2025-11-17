@@ -3,10 +3,10 @@ const jwt = require("jsonwebtoken");
 
 async function auth(req, res, next) {
   try {
-    if (req.cookies.emtoken != undefined && req.cookies.emtoken != "") {
-      const token = req.cookies.emtoken;
+    if (req.cookies.emstoken != undefined && req.cookies.emstoken != "") {
+      const token = req.cookies.emstoken;
       
-      const data = jwt.verify(token, "aabc");
+      const data = jwt.verify(token, "aabb");
       let staff= await staffmodel.findOne({ email: data.token });
       
       if (!staff) return res.status(403).json({ msg: "User not found" });

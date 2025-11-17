@@ -1,6 +1,8 @@
 let express=require("express");
 let router=express.Router();
-let auth=require("../middleware/staff");
+let auth=require("../middleware/admission");
+let auths=require("../middleware/admin");
+
 const multer = require("multer");
 let upload =multer({ 
     storage:multer.diskStorage({
@@ -18,7 +20,7 @@ router.post("/addbook",upload.single("image"),addbook);
 router.get("/viewbook",viewbook);
 router.delete("/deletebook/:id",deletebook);
 router.post("/issuebook",auth,issuebook);
-router.put("/returnbook",auth,returnbook);
+router.post("/returnbook",auth,returnbook);
 router.get("/issued",auth,issued);
 
 module.exports=router;

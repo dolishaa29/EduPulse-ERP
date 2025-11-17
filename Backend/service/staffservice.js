@@ -73,11 +73,11 @@ exports.stafflogin = async (req, res) => {
   console.log(pass);
   if (pass) {
     
-                    let token=jwt.sign({token:data.email},"aabc",{
+                    let token=jwt.sign({token:data.email},"aabb",{
                         expiresIn:"1d"
                     });
 
-                    res.cookie('emtoken', token);
+                    res.cookie('emstoken', token);
                    console.log("send token"+token);
     return res
       .status(200)
@@ -89,7 +89,9 @@ exports.stafflogin = async (req, res) => {
 
 
 exports.staffprofile = async (req, res) => {
+  console.log("hi");
   let staff=req.staff;
+  console.log(staff);
   return res
     .status(200)
     .json({

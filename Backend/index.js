@@ -19,7 +19,7 @@ app.use("/",require("./router/adminrouter"));
 app.use("/",require("./router/staffrouter"));
 app.use("/",require("./router/departmentrouter"));
 app.use("/",require("./router/salaryrouter"));
-app.use("/",require("./router/studentrouter"));
+//app.use("/",require("./router/studentrouter"));
 app.use("/",require("./router/attendancerouter"));
 app.use("/",require("./router/studentattendance"));
 app.use("/",require("./router/formrouter"));
@@ -29,6 +29,7 @@ app.use("/",require("./router/noticerouter"));
 app.use("/",require("./router/assignmentrouter"));
 app.use("/",require("./router/feedbackrouter"));
 app.use("/",require("./router/admission"));
+app.use("/",require("./router/formrouter"))
 const PORT=7000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

@@ -1,10 +1,12 @@
 let express=require("express");
-const { addquestion, viewquestion, updatequestion, deletequestion,checkquestion } = require("../controller/formcontroller");
+const { addquestion, viewAssessment, AssessmentSubmission, ViewResult, viewTitle } = require("../controller/formcontroller");
 let router=express.Router();
+let auth=require("../middleware/admission");
 
 router.post('/addquestion',addquestion);
-router.get('/viewquestion',viewquestion);
-router.put('/updatequestion/:id',updatequestion);
-router.delete('/deletequestion/:id',deletequestion);
-router.post('/checkquestion/:id',checkquestion);
+router.get('/viewTitle',auth,viewTitle);
+router.get('/viewAssessment/:title',auth,viewAssessment);
+router.post('/AssessmentSubmission',auth,AssessmentSubmission);
+router.get('/ViewResult/:title',auth,ViewResult);
+
 module.exports=router;

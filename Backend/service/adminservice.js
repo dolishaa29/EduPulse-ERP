@@ -24,6 +24,7 @@ console.log("req",req.body);
 
 exports.adminlogin=async(req,res)=>
 {
+    console.log("2")
 console.log("used");
     let email=req.body.email;
     let password=req.body.password;
@@ -37,12 +38,14 @@ console.log("used");
         lpass=data.password;
         console.log(lpass);
         pass=await bct.compare(password,lpass); 
+
         if(pass)
             {
+                console.log("3")
                 let token=jwt.sign({token:data.email},"aabb",{
                     expiresIn:"1d"
                 });
-                res.cookie('emtoken', token);
+                res.cookie('token', token);
                 console.log("send token"+token);
                  return res.status(200).json({success: true,msg:'admin login successfully',token})
                                              
