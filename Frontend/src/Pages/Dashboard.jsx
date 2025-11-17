@@ -82,7 +82,9 @@ const Dashboard = () => {
     },
     { text: "Feedback", icon: <RateReview />, path: '/ViewFeedback' },
     { text: "Transport Registration", icon: <BusAlert />, path: '/TransportRegistration' },
-    { text: "Online Test", icon: <EditNote />, path: '/OnlineTest' },
+    { text: "Online Test", icon: <EditNote />, path: '/Test' },
+    { text: "admin profile", icon: <BusAlert />, path: '/Adminprofile' },
+
     { 
       text: "Department", icon: <Business />, onClick: toggleDepartment, open: openDepartment,
       subItems: [

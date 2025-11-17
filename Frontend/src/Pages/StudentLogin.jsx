@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/AdminLogin.css'; 
-
+import cookie from 'js-cookie';
 const Stulogin = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -35,14 +35,18 @@ const Stulogin = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:7000/studentlogin',  
+      const response = await axios.post('http://localhost:7000/admissionlogin',  
         formData,
+        { headers: { 'Content-Type': 'application/json' },}
        
       );
+      const token=response.data.token;
+//alert("aa gya"+token+" cook"+response.get('emstoken'));
 
       if (response.status === 200 && response.data.success===true
         
       ) {
+        cookie.set('token', token, { expires: 1 });
         navigate('/StudentDashboard');  
         window.location.reload();  
       } else {

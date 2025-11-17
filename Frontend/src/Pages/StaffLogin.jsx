@@ -4,7 +4,7 @@ import axios from 'axios';
 import cookie from 'js-cookie';  
 import '../CSS/Login.css'; 
 
-const Stafflogin = () => {
+const StaffLogin = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -45,8 +45,8 @@ const Stafflogin = () => {
       alert(response.data.token);
 
       if (response.status === 200 && response.data.token) {
-        cookie.set('emtoken', response.data.token, { expires: 1 }); 
-        navigate('/StaffDashboard');
+        cookie.set('emstoken', response.data.token, { expires: 1 });
+        navigate('/StaffDashboard'); 
         window.location.reload();  
       } else {
         setError('Invalid login credentials');
@@ -93,4 +93,4 @@ const Stafflogin = () => {
   );
 };
 
-export default Stafflogin;
+export default StaffLogin;

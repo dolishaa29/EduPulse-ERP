@@ -9,8 +9,8 @@ const StudentProfile = () => {
 
   const fetchStudentProfile = async () => {
     setLoading(true);
-    const token = cookie.get('emtoken'); 
-    alert(token)
+    const token = cookie.get('token'); 
+    alert("now"+token)
     if (!token) {
       setError("You need to be logged in to view the profile.");
       setLoading(false);
@@ -24,8 +24,8 @@ const StudentProfile = () => {
         },
         withCredentials: true,
       });
-      alert("response"+response)
-      setStudent(response.data.profile); 
+      alert("response"+response.data.student['email'])
+      setStudent(response.data.student); 
       setLoading(false);
     } catch (err) {
       setError("Failed to fetch student profile");
@@ -45,7 +45,6 @@ const StudentProfile = () => {
       {student ? (
         <div className="profile-details">
           <h2>Student Profile</h2>
-          <img src={`http://localhost:7000/images/${student.image}`} alt="Profile" />
           <p><strong>Student ID:</strong> {student.id}</p>
           <p><strong>Name:</strong> {student.name}</p>
           <p><strong>Email:</strong> {student.email}</p>

@@ -1,0 +1,112 @@
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: "Inter", sans-serif;
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4f46e5;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.container label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.container input[type="text"], 
+.container select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 16px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.container input[type="text"]:focus,
+.container select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.4);
+}
+
+.container > form > div {
+  background: #fafafa;
+  border-left: 4px solid #6366f1;
+  padding: 18px;
+  margin-bottom: 22px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.container h3 {
+  margin-bottom: 14px;
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.container div input[type="text"] {
+  background: white;
+}
+
+.container select {
+  background: white;
+}
+
+.container p {
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.container p:contains("success"),
+.container p:contains("Success"),
+.container p:contains("saved") {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.container p:contains("Error"),
+.container p:contains("error"),
+.container p:contains("Please") {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+button {
+  width: 100%;
+  background: #6366f1;
+  color: white;
+  padding: 14px;
+  border: none;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #4f46e5;
+  box-shadow: 0px 4px 10px rgba(79, 70, 229, 0.3);
+}
+
+button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+}

@@ -76,15 +76,23 @@ const StudentDashboard = () => {
                     <ListItem button onClick={() => navigateTo('/Test')}>
                       <ListItemText primary="Test" />
                     </ListItem>
+                    
 
+                     <ListItem button onClick={() => navigateTo('/payfee')}>
+                      <ListItemText primary="Payfee" />
+                    </ListItem>
 
                     <ListItem button onClick={() => navigateTo('/TransportDetails')}>
                       <ListItemText primary="Transport Details" />
                     </ListItem>
+                    
+                    <ListItem button onClick={() => navigateTo('/viewTest')}>
+                      <ListItemText primary="View Test" />
+                    </ListItem>
 
 
-          <ListItem button onClick={() => navigateTo('/ViewBook')}>
-            <ListItemText primary="View Book" />
+          <ListItem button onClick={() => navigateTo('/Managebook')}>
+            <ListItemText primary="Manage Book" />
           </ListItem>
 
 

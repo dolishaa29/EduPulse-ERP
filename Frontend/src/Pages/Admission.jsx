@@ -28,7 +28,7 @@ const Admission = () => {
     address: '',
     city: '',
     contact: '',
-    password: '', // added password field
+    password: '', 
   });
   const [selectedServices, setSelectedServices] = useState({
     hostel: false,
@@ -78,11 +78,8 @@ const Admission = () => {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    setStatus({ type: 'info', message: 'Processing admission and generating payment link...' });
 
     await new Promise((resolve) => setTimeout(resolve, 2500));
-
-    // Prepare the form data for submission
     const formData = {
       ...studentDetails,
       basefee: baseFee,
@@ -92,7 +89,6 @@ const Admission = () => {
       totalfee: totalFee,
     };
 
-    // Make an API call to register the student (POST request)
     try {
       const response = await axios.post('http://localhost:7000/admission', {
         ...formData,
@@ -105,7 +101,7 @@ const Admission = () => {
           type: 'success',
           message: `Admission for ${studentDetails.name} confirmed! Total fee of ${formatCurrency(
             totalFee
-          )} is payable. Redirecting to payment confirmation...`,
+          )} `,
         });
         setTimeout(() => {
           setStep(1);
@@ -118,7 +114,7 @@ const Admission = () => {
             address: '',
             city: '',
             contact: '',
-            password: '', // reset password
+            password: '', 
           });
           setSelectedServices({ hostel: false, library: false, transport: false });
           setStatus(null);

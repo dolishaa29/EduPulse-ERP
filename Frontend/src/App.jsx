@@ -4,7 +4,7 @@ import AllLogin from './Pages/AllLogin'
 import AdminLogin from './Pages/AdminLogin'
 import Dashboard from './Pages/Dashboard'
 import Stafflogin from './Pages/StaffLogin'
-import Stulogin from './Pages/StudentLogin'
+import StudentLogin from './Pages/StudentLogin'
 import UpdateStaff from './Pages/UpdateStaff'
 import UpdateStudent from './Pages/UpdateStudent'
 import ViewStaff from './Pages/ViewStaff'
@@ -23,7 +23,6 @@ import ViewNotices from './Pages/ViewNotices'
 import ViewFeedback from './Pages/ViewFeedback'
 import ViewBook from './Pages/ViewBook'
 import UpdateSalary from './Pages/UpdateSalary'
-import Question from './Pages/Question'
 import Feedback from './Pages/Feedback'
 import TransportDetais from './Pages/TransportDetail'
 import TransportRegistration from './Pages/TransportRegistration'
@@ -41,7 +40,11 @@ import StuAttendance from './Pages/StuAttendance'
 import StaffAttendance from './Pages/StaffAttendance'
 import Managebook from './Pages/Managebook'
 import Admission from './Pages/Admission'
-
+import Adminprofile from './Pages/Adminprofile'
+import FeePayment from './Pages/payfee'
+import ViewTest from './Pages/viewTest'
+import QuizDetails from './Pages/Quiz'
+import Viewresult from './Pages/Viewresult'
 function App() {
   return (
     <div>
@@ -52,7 +55,7 @@ function App() {
         <Route path='/AdminLogin' element={<AdminLogin/>}/>
         <Route path='/Dashboard' element={<Dashboard/>}/>
         <Route path='/StaffLogin' element={<Stafflogin/>}/>
-        <Route path='/StudentLogin' element={<Stulogin/>}/>
+        <Route path='/StudentLogin' element={<StudentLogin/>}/>
         <Route path='/UpdateStaff/:staffId' element={<UpdateStaff/>}/>
         <Route path='/UpdateStudent/:studentId' element={<UpdateStudent/>}/>
         <Route path='/ViewStaff' element={<ViewStaff/>}/>
@@ -74,7 +77,6 @@ function App() {
         <Route path='/UpdateSalary/:salaryId' element={<UpdateSalary/>}/>
         <Route path='/Test' element={<Test/>}/>
         <Route path='/SalaryRegistration' element={<SalaryRegister/>}/>
-        <Route path='/OnlineTest' element={<Question/>}/>
         <Route path='/Feedback' element={<Feedback/>}/>
         <Route path='/TransportDetail' element={<TransportDetais/>}/>
         <Route path='/TransportRegistration' element={<TransportRegistration/>}/>
@@ -89,6 +91,12 @@ function App() {
         <Route path='/StaffAttendance' element={<StaffAttendance/>}/>
         <Route path='/issued' element={<Managebook/>}/>
         <Route path='/Admission' element={<Admission/>}/>
+        <Route path='/Adminprofile' element={<Adminprofile/>}/>
+        <Route path='/payfee' element={<FeePayment/>}/>
+        <Route path='/Managebook' element={<Managebook/>}/>
+        <Route path='/viewTest' element={<ViewTest/>}/>
+         <Route path="/view-test/:title" element={<QuizDetails />} />
+         <Route path='/viewresult/:title' element={<Viewresult/>}/>
       </Routes>
       </BrowserRouter>
     </div>
